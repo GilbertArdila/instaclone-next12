@@ -1,16 +1,17 @@
-import Head from "next/head";
+import MetaHead from "../components/MetaHead.jsx";
+import Header from "../components/header/Header.jsx";
+
 
 export default function Home() {
   return (
     <div>
-      <Head>
-        <title>InstaClone App</title>
-        <meta name="InstaClone" content="only for educational purposes" />
-        <link rel="icon" href="/logo.svg" />
-      </Head>
+      <MetaHead name={"Home"} content={"only for educational purposes"}/>
 
       <main>
-        <h1 className="font-mono text-red-500">Hello word</h1>
+        {/**Header */}
+         <Header/>
+        {/**Feed */}
+        {/**Modal */}
       </main>
     </div>
   );
