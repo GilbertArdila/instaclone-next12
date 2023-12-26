@@ -1,13 +1,14 @@
 import Logo from "./Logo";
+import Searcher from "./Searcher";
 
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-between max-w-6xl">   
+    <header className="flex items-center justify-around max-w-6xl">   
         <Logo/>           
-        
-        <h2 className="flex-1">Search</h2>             
-        <h2 >Buttons</h2>            
+        <Searcher/>
+                     
+        <h2 >Button</h2>            
     </header>
   )
 }
