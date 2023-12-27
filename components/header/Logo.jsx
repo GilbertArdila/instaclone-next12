@@ -8,7 +8,7 @@ const Logo = () => {
       </div>
 
       <div className="h-20 w-10 relative cursor-pointer  lg:hidden">
-        <Image className="object-contain  hidden sm:inline-block " src="/largeScreenLogo.jpg" alt="Small screens logo" layout="fill" />
+        <Image className="object-contain  " src="/largeScreenLogo.jpg" alt="Small screens logo" layout="fill" />
       </div>
     </>
 
