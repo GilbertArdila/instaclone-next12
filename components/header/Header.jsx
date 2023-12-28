@@ -5,12 +5,15 @@ import Searcher from "./Searcher";
 
 const Header = () => {
   return (
-    <header className="flex items-center justify-around max-w-6xl mx-4 md:mx-auto pt-2 border-b shadow-sm bg-white rounded-lg">   
-        <Logo/>           
-        <Searcher/>
-        <Menu/>           
+    <header className="shadow-sm bg-white border-b sticky top-0 z-20">
+      <div className="flex items-center justify-around max-w-6xl mx-4 md:mx-auto  ">
+        <Logo />
+        <Searcher />
+        <Menu />
+      </div>
+      
     </header>
-  )
+    )
 }
 
 export default Header;
