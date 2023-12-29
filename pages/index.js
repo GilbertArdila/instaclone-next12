@@ -5,7 +5,7 @@ import Header from "../components/header/Header.jsx";
 
 export default function Home() {
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen">
       <MetaHead name={"Home"} content={"only for educational purposes"}/>
 
       <main>

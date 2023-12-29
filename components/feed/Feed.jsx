@@ -1,12 +1,17 @@
-import React from 'react'
+import Stories from "./Stories";
+
 
 const Feed = () => {
   return (
     <div>
-        {/**stories */}
-        {/**feed */}
-        {/**mini-profile */}
-        {/**suggestions */}
+      <section><Stories/>  {/**feed */}
+      </section>
+      <section> {/**mini-profile */}</section>
+      <section>{/**suggestions */}</section>
+        
+      
+       
+        
     </div>
   )
 }
