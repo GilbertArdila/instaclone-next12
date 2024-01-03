@@ -1,4 +1,5 @@
 import MiniProfile from "./lateralSection/MiniProfile";
+import Suggestions from "./lateralSection/Suggestions";
 import Posts from "./posts/Posts";
 import Stories from "./stories/Stories";
 
@@ -11,10 +12,11 @@ const Feed = () => {
         <Posts />
       </section>
       <section className="hidden md:inline-grid md:col-span-1">
-        <div className="fixed w-auto max-w-[380px] ">
+        <div className="fixed w-auto lg:w-[380px] ">
           {/**mini-profile */}
           <MiniProfile/>
         {/**suggestions */} 
+        <Suggestions/>
         </div>
        
       </section>

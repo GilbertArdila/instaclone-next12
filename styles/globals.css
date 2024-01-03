@@ -4,6 +4,12 @@
 
 @layer components{
     .headerMenu{
-        @apply w-6 h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out 
+        @apply w-6 h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-in 
+    }
+    .storyImage{
+        @apply rounded-full h-14 w-14 p-[1.5px] border-2 border-t-red-500 border-b-blue-500 border-r-green-500 border-l-yellow-500 cursor-pointer hover:scale-110 transition-transform duration-200 ease-in
+    }
+    .btn{
+        @apply font-semibold text-blue-400 hover:scale-110 transition-transform duration-200 ease-in
     }
 }

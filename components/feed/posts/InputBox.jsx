@@ -11,7 +11,7 @@ const InputBox = () => {
             className="flex-1 border-none focus:ring-0"
             type="text"
             placeholder="Enter your comment..." />
-            <button className="text-blue-400 font-bold">Post</button>
+            <button className="btn">Post</button>
         </form>
     )
 }
