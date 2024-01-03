@@ -4,6 +4,6 @@
 
 @layer components{
     .headerMenu{
-        @apply w-6 h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out
+        @apply w-6 h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out 
     }
 }
