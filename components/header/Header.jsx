@@ -4,6 +4,7 @@ import Searcher from "./Searcher";
 
 
 const Header = () => {
+  
   return (
     <header className="shadow-sm bg-white border-b sticky top-0 z-20">
       <div className="flex items-center justify-around max-w-6xl mx-4 md:mx-auto  ">
