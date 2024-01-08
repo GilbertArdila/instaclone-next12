@@ -1,9 +1,12 @@
-import UserProfileImage from "../../UserProfileImage";
 
 const Header = ({ post }) => {
   return (
     <div className="flex items-center p-5">
-      <UserProfileImage styles={"w-12 h-12 rounded-full object-cover border p-1 mr-3"} />
+
+      <img
+        className="w-12 h-12 rounded-full object-cover border p-1 mr-3"
+        src={post.userImage}
+        alt={post.userName}/>
 
       <h3 className="font-bold flex-1">{post.userName}</h3>
 

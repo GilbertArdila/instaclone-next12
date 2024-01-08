@@ -1,11 +1,14 @@
-
+import { useSession,  signOut } from "next-auth/react";
 
 const UserProfileImage = ({styles}) => {
+  const {data: session} = useSession();
   return (
     <img 
     className={`${styles}`}
-    src="https://avatars.githubusercontent.com/u/88728941?v=4" 
-    alt="user-image" />
+    src={session?.user.image} 
+    alt={session?.user.name}
+    onClick={()=>signOut()}
+    />
   )
 }
 
