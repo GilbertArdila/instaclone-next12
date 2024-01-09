@@ -19,12 +19,7 @@ const Menu = () => {
             </svg>
 
             <UserProfileImage styles={'w-10 h-10 rounded-full p-[1px] cursor-pointer'} />
-        </div>
-        
-       
-    
-    
-        
+        </div>   
     )
 }
 
