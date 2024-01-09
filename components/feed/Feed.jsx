@@ -8,7 +8,7 @@ import { useSession } from "next-auth/react";
 const Feed = () => {
   const {data: session} = useSession();
   return (
-    <main className={`grid grid-cols-1  md:max-w-6xl mx-auto ${session ? 'md:grid-cols-3' : null}`}>
+    <main className={`grid grid-cols-1  mx-auto ${session ? 'md:grid-cols-3  md:max-w-6xl' : 'md:grid-cols-2  md:max-w-3xl'}`}>
       <section className="md:col-span-2">
         <Stories />
         <Posts />

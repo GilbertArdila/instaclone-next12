@@ -1,8 +1,10 @@
 
 
 const Story = ({user}) => {
+  
+
   return (
-    <div>
+    <div className="">
      <img 
      className="storyImage"
      src={user.image} 
