@@ -1,6 +1,7 @@
 import MetaHead from "../components/MetaHead.jsx";
 import Feed from "../components/feed/Feed.jsx";
 import Header from "../components/header/Header.jsx";
+import UploadModal from "../components/modal/UploadModal.jsx";
 
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
          <Feed/>
       
         {/**Modal */}
+        <UploadModal/>
       </main>
     </div>
   );
