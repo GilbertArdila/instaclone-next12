@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Story from './Story';
-import { dataUser } from '../../../minifaker';
+import { dataUser } from '../../../helpers/minifaker.js';
 import { useSession } from 'next-auth/react';
 
 const Stories = () => {

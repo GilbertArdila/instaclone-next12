@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Suggestion from "./Suggestion";
-import { dataUser } from "../../../minifaker";
+import { dataUser } from "../../../helpers/minifaker.js";
 
 
 
