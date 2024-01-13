@@ -8,6 +8,7 @@ import Loading from "../../pages/Loading.jsx";
 import { upload } from "../../helpers/actions.js";
 
 const UploadModal = () => {
+    
     const { data: session } = useSession();
     const [open, setOpen] = useRecoilState(modalState);
     const [isLoading, setIsLoading] = useState(false);
