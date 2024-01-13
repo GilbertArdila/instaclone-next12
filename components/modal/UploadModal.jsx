@@ -2,12 +2,10 @@ import { useRecoilState } from "recoil";
 import { modalState } from "../../atom/modalAtom.js";
 import Modal from "react-modal";
 import { useRef, useState } from "react";
-import { addDoc, collection, doc, serverTimestamp, updateDoc } from "firebase/firestore";
-import { db, storage } from "../../firebase.js";
 import { useSession } from "next-auth/react";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
 import Loading from "../../pages/Loading.jsx";
+import { upload } from "../../helpers/actions.js";
 
 const UploadModal = () => {
     const { data: session } = useSession();
@@ -31,28 +29,7 @@ const UploadModal = () => {
     }
 
     async function uploadPost() {
-        if (isLoading) return;
-        setIsLoading(true);
-        const docRef = await addDoc(collection(db, "posts"), {
-            caption: captionRef.current.value,
-            userName: session.user.name.split(" ").join("").toLocaleLowerCase(),
-            profileImage: session.user.image,
-            timestamp: serverTimestamp(),
-        })
-
-        const imageRef = ref(storage, `posts/${docRef.id}/image`);
-        await uploadString(imageRef, selectedFile, "data_url")
-            .then(
-                async (snapshot) => {
-                    const downloadURL = await getDownloadURL(imageRef);
-                    await updateDoc(doc(db, "posts", docRef.id), {
-                        image: downloadURL
-                    });
-                }
-            );
-        setOpen(false);
-        setIsLoading(false);
-        setSelectedFile(null);
+       upload(isLoading,setIsLoading,selectedFile,setSelectedFile,captionRef,setOpen,session)
 
     }
 
