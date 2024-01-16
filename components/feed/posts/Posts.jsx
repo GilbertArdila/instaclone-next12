@@ -17,7 +17,8 @@ const Posts = () => {
       }
     )
     return unsubscribe;
-   }, [])
+    /**we add this dependency to avoid requests every second to data base */
+   }, [db])
    
   return (
     <div>

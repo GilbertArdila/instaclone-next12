@@ -1,9 +1,12 @@
+import {useSession} from "next-auth/react";
+
 import Buttons from "./Buttons";
 import InputBox from "./InputBox";
 
 
 
 const Post = ({ post }) => {
+  const {data: session} = useSession();
  
   return (
     <div className="bg-white my-7 border rounded-md ">
@@ -27,11 +30,13 @@ const Post = ({ post }) => {
       {/**Post image */}
       <img className="object-cover w-full max-w-[465px] mx-auto" src={post.data().image} alt={post.data().userName} />
       {/**Post buttons */}
-      <Buttons />
+      {session && <Buttons />}
+      
       {/**Post comments */}
       <p className="p-5 truncate"><span className="font-bold mr-2">{post.userName}</span>{post.data().caption}</p>
       {/**Post input box */}
-      <InputBox />
+      {session && <InputBox />}
+      
 
     </div>
   )
