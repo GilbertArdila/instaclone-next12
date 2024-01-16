@@ -30,4 +30,6 @@ async function upload(isLoading,setIsLoading, selectedFile, setSelectedFile,capt
 
 }
 
+
+
 export {upload}

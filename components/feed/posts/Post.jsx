@@ -8,6 +8,7 @@ import InputBox from "./InputBox";
 const Post = ({ post }) => {
   const {data: session} = useSession();
  
+ 
   return (
     <div className="bg-white my-7 border rounded-md ">
       {/**Post header */}
@@ -35,7 +36,7 @@ const Post = ({ post }) => {
       {/**Post comments */}
       <p className="p-5 truncate"><span className="font-bold mr-2">{post.userName}</span>{post.data().caption}</p>
       {/**Post input box */}
-      {session && <InputBox />}
+      {session && <InputBox id={post.id} />}
       
 
     </div>

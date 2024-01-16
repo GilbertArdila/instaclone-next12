@@ -13,8 +13,6 @@ export default function Home() {
        
          <Header/>
          <Feed/>
-      
-        {/**Modal */}
         <UploadModal/>
       </main>
     </div>

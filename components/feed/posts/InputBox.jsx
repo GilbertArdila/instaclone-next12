@@ -1,6 +1,25 @@
+import {addDoc, collection, serverTimestamp} from "firebase/firestore";
+import {db} from "../../../firebase.js";
+import {useSession} from "next-auth/react";
+import { useState } from "react";
 
 
-const InputBox = () => {
+const InputBox = ({id}) => {
+    const {data: session} = useSession();
+    const [comment, setComment] = useState("");
+   
+
+    async function sendComment(event){
+       event.preventDefault();
+       const newComment = comment;
+       setComment("");
+       await addDoc(collection(db, "posts", id, "comments"),{
+        comment: newComment,
+        userName: session.user.name.split(" ").join("").toLocaleLowerCase(),
+        userImage: session.user.image,
+        timestamp:serverTimestamp()
+       })
+    }
     return (
         <form className="flex items-center justify-between p-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="headerMenu">
@@ -8,10 +27,16 @@ const InputBox = () => {
             </svg>
 
             <input
+            value={comment}
+            onChange={(event)=> setComment(event.target.value) }
             className="flex-1 border-none focus:ring-0"
             type="text"
             placeholder="Enter your comment..." />
-            <button className="btn">Post</button>
+
+            <button 
+            disabled={!comment.trim()}
+            onClick={sendComment}
+            className={`disabled:text-blue-200 ${comment.trim() && "btn"}  `}>Post</button>
         </form>
     )
 }
