@@ -2,12 +2,12 @@ import {useSession} from "next-auth/react";
 
 import Buttons from "./Buttons";
 import InputBox from "./InputBox";
+import Comments from "./Comments";
 
 
 
 const Post = ({ post }) => {
   const {data: session} = useSession();
- 
  
   return (
     <div className="bg-white my-7 border rounded-md ">
@@ -33,8 +33,10 @@ const Post = ({ post }) => {
       {/**Post buttons */}
       {session && <Buttons />}
       
-      {/**Post comments */}
+      {/**Post caption */}
       <p className="p-5 truncate"><span className="font-bold mr-2">{post.userName}</span>{post.data().caption}</p>
+      {/**Post comments */}
+        <Comments id={post.id}/>
       {/**Post input box */}
       {session && <InputBox id={post.id} />}
       
