@@ -22,7 +22,7 @@ const Stories = () => {
             className="storyImage group-hover:scale-110"
             src={session.user.image}
             alt={session.user.name} />
-          <p className="truncate text-xs w-14">{session.user.name.split(" ").join("").toLocaleLowerCase()}</p>
+          <p className="truncate text-xs w-14">{session.user.username}</p>
 
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 absolute top-3 left-3 text-white">
             <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

@@ -1,5 +1,6 @@
 import {useSession} from "next-auth/react";
-
+import { useRecoilState } from "recoil";
+import {commentState} from "../../../atom/modalAtom.js";
 import Buttons from "./Buttons";
 import InputBox from "./InputBox";
 import Comments from "./Comments";
@@ -8,7 +9,7 @@ import Comments from "./Comments";
 
 const Post = ({ post }) => {
   const {data: session} = useSession();
- 
+  const [isOpen, setIsOpen] = useRecoilState(commentState);
   return (
     <div className="bg-white my-7 border rounded-md ">
       {/**Post header */}
@@ -17,7 +18,7 @@ const Post = ({ post }) => {
         <img
           className="w-12 h-12 rounded-full object-cover border p-1 mr-3"
           src={post.data().profileImage}
-          alt={post.data().userName} />
+          alt={post.data().username} />
 
         <h3 className="font-bold flex-1">{post.data().userName}</h3>
 
@@ -29,16 +30,18 @@ const Post = ({ post }) => {
 
       </div>
       {/**Post image */}
-      <img className="object-cover w-full max-w-[465px] mx-auto" src={post.data().image} alt={post.data().userName} />
+      <img className="object-cover w-full max-w-[465px] mx-auto" src={post.data().image} alt={post.data().username} />
       {/**Post buttons */}
-      {session && <Buttons />}
+      {session && <Buttons id={post.id} />}
       
       {/**Post caption */}
       <p className="p-5 truncate"><span className="font-bold mr-2">{post.userName}</span>{post.data().caption}</p>
       {/**Post comments */}
-        <Comments id={post.id}/>
+      <Comments id={post.id}/>
+  
+        
       {/**Post input box */}
-      {session && <InputBox id={post.id} />}
+      {session && isOpen && <InputBox id={post.id} />}
       
 
     </div>

@@ -1,19 +1,47 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
+import {useSession} from "next-auth/react";
+import { useRecoilState } from "recoil";
+import {commentState} from "../../../atom/modalAtom.js";
+import {setDoc, doc, orderBy, onSnapshot, query, collection, deleteDoc} from "firebase/firestore";
+
+import {db} from "../../../firebase.js";
 
 
 
-const Buttons = () => {
+const Buttons = ({id}) => {
+    const {data: session} = useSession();
     const [isLiked, setIsLiked] = useState(false);
-    const [hasLiked, setHasLiked] = useState(false);
+    const [likes, setLikes] = useState([]);
+    const [isOpen, setIsOpen] = useRecoilState(commentState);
 
-    function likePost(){
-        setIsLiked(!isLiked);
+    useEffect(() => {
+        const unsubscribe = onSnapshot(
+            collection(db, "posts",id,"likes"), (snapshot)=>setLikes(snapshot.docs)
+          )
+    }, [db])
+    
+
+    useEffect(() => {
+      setIsLiked(
+        likes.findIndex(like => like.id === session?.user.uid) !== -1
+      )
+    }, [likes])
+    
+   
+    async function likePost(){
+        if(isLiked){
+            await deleteDoc(doc(db, "posts", id, "likes", session.user.uid))
+        }else{
+            await setDoc(doc(db, "posts", id, "likes", session.user.uid),{
+            userName:session.user.username
+        })
+        }
     }
     
     return (
         <div className="flex items-center justify-between px-4 pt-4">
             <div className="flex space-x-4">
-
+                  {/**like icon */}
                 {isLiked ?<svg 
                 xmlns="http://www.w3.org/2000/svg" 
                 viewBox="0 0 24 24" 
@@ -33,8 +61,13 @@ const Buttons = () => {
                 >
                     <path strokeLinecap="round" strokeLinejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                 </svg>}
-                
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="headerMenu">
+                {/**globe icon */}
+                <svg 
+                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" 
+                strokeWidth={1.5} 
+                stroke="currentColor" 
+                className="headerMenu"
+                onClick={()=>setIsOpen(!isOpen)}>
                     <path strokeLinecap="round" strokeLinejoin="round" d="M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 0 1-2.555-.337A5.972 5.972 0 0 1 5.41 20.97a5.969 5.969 0 0 1-.474-.065 4.48 4.48 0 0 0 .978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25Z" />
                 </svg>
             </div>

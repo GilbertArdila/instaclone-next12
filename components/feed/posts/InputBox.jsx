@@ -15,7 +15,7 @@ const InputBox = ({id}) => {
        setComment("");
        await addDoc(collection(db, "posts", id, "comments"),{
         comment: newComment,
-        userName: session.user.name.split(" ").join("").toLocaleLowerCase(),
+        userName: session.user.username,
         userImage: session.user.image,
         timestamp:serverTimestamp()
        })
