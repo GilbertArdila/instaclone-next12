@@ -17,6 +17,7 @@ const PostModal = () => {
   const [id, setId] = useRecoilState(postId);
   const [isLoading, setIsLoading] = useState(false);
   const captionRef = useRef(null);
+  const [newCaption, setNewCaption] = useState("");
 
   async function uploadCaption() {
     if (isLoading) return;
@@ -28,7 +29,7 @@ const PostModal = () => {
     setIsLoading(false);
     setId(null);
   }
-
+ 
   return (
     <div >
       {open && user == session?.user.uid && (
@@ -40,6 +41,8 @@ const PostModal = () => {
         >
           <div className="flex flex-col justify-center items-center  h-[100%]">
             <input
+            value={newCaption}
+            onChange={(e)=>setNewCaption(e.target.value)}
               ref={captionRef}
               type="text"
               maxLength={"150"}
@@ -48,7 +51,7 @@ const PostModal = () => {
 
             {isLoading ? <Loading /> : <button
               onClick={uploadCaption}
-              disabled={isLoading || !captionRef}
+              disabled={isLoading || !newCaption}
               className="w-full bg-red-500 text-white p-2 shadow-md hover:brightness-125 disabled:bg-gray-200 disabled:cursor-not-allowed disabled:hover:brightness-100">Upload Caption</button>
             }
           </div>
