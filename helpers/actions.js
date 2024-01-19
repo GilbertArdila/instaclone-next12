@@ -9,8 +9,9 @@ async function upload(isLoading,setIsLoading, selectedFile, setSelectedFile,capt
     setIsLoading(true);
     const docRef = await addDoc(collection(db, "posts"), {
         caption: captionRef.current.value,
-        userName: session.user.name.split(" ").join("").toLocaleLowerCase(),
+        userName: session.user.username,
         profileImage: session.user.image,
+        id: session.user.uid,
         timestamp: serverTimestamp(),
     })
 

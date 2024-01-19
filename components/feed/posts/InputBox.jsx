@@ -2,11 +2,14 @@ import {addDoc, collection, serverTimestamp} from "firebase/firestore";
 import {db} from "../../../firebase.js";
 import {useSession} from "next-auth/react";
 import { useState } from "react";
+import { useRecoilState } from "recoil";
+import { commentState } from "../../../atom/modalAtom.js";
 
 
 const InputBox = ({id}) => {
     const {data: session} = useSession();
     const [comment, setComment] = useState("");
+    const [isOpen, setIsOpen] = useRecoilState(commentState);
    
 
     async function sendComment(event){
@@ -19,6 +22,7 @@ const InputBox = ({id}) => {
         userImage: session.user.image,
         timestamp:serverTimestamp()
        })
+       setIsOpen(false);
     }
     return (
         <form className="flex items-center justify-between p-4">

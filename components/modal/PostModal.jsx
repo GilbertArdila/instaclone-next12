@@ -31,7 +31,7 @@ const PostModal = () => {
 
   return (
     <div >
-      {open && user == session?.user.username && (
+      {open && user == session?.user.uid && (
         <Modal
           className="max-w-lg w-[90%] h-auto p-6 absolute top-56 left-[50%] translate-x-[-50%] bg-white border-2 rounded-md shadow-md"
           ariaHideApp={false}

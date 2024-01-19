@@ -17,7 +17,7 @@ const Post = ({ post }) => {
   const [newPostUser, setNewPostUser] = useRecoilState(postUser)
 
 
- 
+
   
   return (
     <div className="bg-white my-7 border rounded-md ">
@@ -41,7 +41,7 @@ const Post = ({ post }) => {
         onClick={()=>{
           setOpenPostModal(true); 
           setNewPostId(post.id);
-          setNewPostUser(post.data().userName);
+          setNewPostUser(post.data().id);
          }}
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
