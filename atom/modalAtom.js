@@ -16,9 +16,6 @@ const modalState = atom({
     key: 'postId', 
     default: null, 
   });
-  const postUser = atom({
-    key: 'postUser', 
-    default: null, 
-  });
+  
 
-  export{modalState,commentState,postModalState,postId,postUser}
+  export{modalState,commentState,postModalState,postId}

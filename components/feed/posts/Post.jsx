@@ -1,12 +1,9 @@
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
-import { commentState, postModalState, postId, postUser } from "../../../atom/modalAtom.js";
+import { commentState, postModalState, postId } from "../../../atom/modalAtom.js";
 import Buttons from "./Buttons";
 import InputBox from "./InputBox";
 import Comments from "./Comments";
-
-
-
 
 
 const Post = ({ post }) => {
@@ -14,10 +11,7 @@ const Post = ({ post }) => {
   const [isOpen, setIsOpen] = useRecoilState(commentState);
   const [openPostModal, setOpenPostModal] = useRecoilState(postModalState);
   const [newPostId, setNewPostId] = useRecoilState(postId);
-  const [newPostUser, setNewPostUser] = useRecoilState(postUser)
-
-
-
+  
 
   return (
     <div className="bg-white my-7 border rounded-md ">
@@ -30,7 +24,7 @@ const Post = ({ post }) => {
           alt={post.data().username} />
 
         <h3 className="font-bold flex-1">{post.data().userName}</h3>
-        <svg
+        {post.data().id === session.user.uid && <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -40,11 +34,13 @@ const Post = ({ post }) => {
           onClick={() => {
             setOpenPostModal(true);
             setNewPostId(post.id);
-            setNewPostUser(post.data().id);
+            
           }}
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-        </svg>
+        </svg>}
+        
+
 
 
 
