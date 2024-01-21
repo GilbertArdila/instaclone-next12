@@ -25,6 +25,7 @@ const PostModal = () => {
     await updateDoc(doc(db, "posts", id), {
       caption: captionRef.current.value
     })
+    setNewCaption("");
     setOpen(false);
     setIsLoading(false);
     setId(null);
