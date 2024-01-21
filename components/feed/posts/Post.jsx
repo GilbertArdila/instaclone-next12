@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
-import { commentState, postModalState, postId } from "../../../atom/globalStates.js";
+import { commentState, postMenuState, postId } from "../../../atom/globalStates.js";
 import Buttons from "./Buttons";
 import InputBox from "./InputBox";
 import Comments from "./Comments";
@@ -9,7 +9,7 @@ import Comments from "./Comments";
 const Post = ({ post }) => {
   const { data: session } = useSession();
   const [isOpen, setIsOpen] = useRecoilState(commentState);
-  const [openPostModal, setOpenPostModal] = useRecoilState(postModalState);
+  const [openPostMenu, setOpenPostMenu] = useRecoilState(postMenuState);
   const [newPostId, setNewPostId] = useRecoilState(postId);
   
 
@@ -32,7 +32,7 @@ const Post = ({ post }) => {
           stroke="currentColor"
           className="w-6 h-6"
           onClick={() => {
-            setOpenPostModal(true);
+            setOpenPostMenu(true);
             setNewPostId(post.id);
             
           }}

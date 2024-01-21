@@ -12,10 +12,14 @@ const modalState = atom({
     key: 'postModalState', 
     default: false, 
   });
+  const postMenuState = atom({
+    key: 'postMenuState', 
+    default: false, 
+  });
   const postId = atom({
     key: 'postId', 
     default: null, 
   });
   
 
-  export{modalState,commentState,postModalState,postId}
+  export{modalState,commentState,postMenuState,postModalState,postId}
