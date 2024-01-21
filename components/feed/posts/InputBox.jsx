@@ -3,7 +3,7 @@ import {db} from "../../../firebase.js";
 import {useSession} from "next-auth/react";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
-import { commentState } from "../../../atom/modalAtom.js";
+import { commentState } from "../../../atom/globalStates.js";
 
 
 const InputBox = ({id}) => {

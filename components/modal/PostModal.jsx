@@ -5,7 +5,7 @@ import { useState, useRef } from "react";
 import {  doc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase.js";
 
-import { postModalState, postId } from "../../atom/modalAtom.js";
+import { postModalState, postId } from "../../atom/globalStates.js";
 import Loading from "../../pages/Loading";
 
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
-import { commentState } from "../../../atom/modalAtom.js";
+import { commentState } from "../../../atom/globalStates.js";
 import { setDoc, doc, orderBy, onSnapshot, query, collection, deleteDoc } from "firebase/firestore";
 
 import { db } from "../../../firebase.js";

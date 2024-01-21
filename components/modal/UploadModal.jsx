@@ -1,5 +1,5 @@
 import { useRecoilState } from "recoil";
-import { modalState } from "../../atom/modalAtom.js";
+import { modalState } from "../../atom/globalStates.js";
 import Modal from "react-modal";
 import { useRef, useState } from "react";
 import { useSession } from "next-auth/react";

@@ -1,7 +1,7 @@
 import UserProfileImage from "../UserProfileImage";
 
 
-import { modalState } from "../../atom/modalAtom";
+import { modalState } from "../../atom/globalStates.js";
 import { useRecoilState } from "recoil";
 import { useRouter } from "next/router";
 import { useSession, signIn } from "next-auth/react";

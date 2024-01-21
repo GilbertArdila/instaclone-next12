@@ -1,6 +1,6 @@
 import { useSession } from "next-auth/react";
 import { useRecoilState } from "recoil";
-import { commentState, postModalState, postId } from "../../../atom/modalAtom.js";
+import { commentState, postModalState, postId } from "../../../atom/globalStates.js";
 import Buttons from "./Buttons";
 import InputBox from "./InputBox";
 import Comments from "./Comments";
