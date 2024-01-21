@@ -25,7 +25,7 @@ const Post = ({ post }) => {
 
         <h3 className="font-bold flex-1">{post.data().userName}</h3>
 
-        {post.data().id === session.user.uid && <svg
+        {post.data().id === session?.user.uid && <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
