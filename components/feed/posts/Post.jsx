@@ -24,6 +24,7 @@ const Post = ({ post }) => {
           alt={post.data().username} />
 
         <h3 className="font-bold flex-1">{post.data().userName}</h3>
+
         {post.data().id === session.user.uid && <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -41,15 +42,11 @@ const Post = ({ post }) => {
         </svg>}
         
 
-
-
-
-
       </div>
       {/**Post image */}
       <img className="object-cover w-full max-w-[465px] mx-auto" src={post.data().image} alt={post.data().username} />
       {/**Post buttons */}
-      {session && <Buttons id={post.id} />}
+      {session &&  <Buttons id={post.id} postId={post.data().id} />}
 
       {/**Post caption */}
       <p className="p-5 truncate"><span className="font-bold mr-2">{post.userName}</span>{post.data().caption}</p>
