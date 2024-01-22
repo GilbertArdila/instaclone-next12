@@ -1,7 +1,7 @@
 import {getProviders, signIn} from "next-auth/react"
 import Header from "../../components/header/Header";
 
-const signIng = ({providers}) => {
+const SignIn = ({providers}) => {
     
   return (
     <>
@@ -26,7 +26,7 @@ const signIng = ({providers}) => {
   )
 }
 
-export default signIng;
+export default SignIn;
 
 export async function getServerSideProps(context){
     const providers = await getProviders();
