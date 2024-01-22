@@ -17,13 +17,14 @@ const Comments = ({id}) => {
     
       
     }, [db])
+    
  
   return (
     <div>
         {postComments.length >0 && (
-            <div className="mx-10 max-h-24 overflow-y-scroll scrollbar-none">
+            <div  className="mx-10 max-h-24 overflow-y-scroll scrollbar-none">
                 {postComments.map((postComment) =>(
-                    <Comment postComment={postComment}/>
+                    <Comment key={postComment.data().comment} postComment={postComment}/>
                 ))}
             </div>
         )}

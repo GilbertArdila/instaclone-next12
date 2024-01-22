@@ -30,8 +30,8 @@ const Posts = () => {
   return (
     <div>
       {posts?.map((post) => (
-        <>
-          <Post key={post.id} post={post} /></>
+        
+          <Post key={post.id} post={post} />
       ))}
     </div>
   )
